@@ -1,0 +1,37 @@
+.Directory {
+  background: linear-gradient(to bottom right, rgba(0, 98, 167, 0.22), rgba(24, 40, 60, 0.89));
+  box-shadow: 0 1px 0.3px 0px rgba(0, 105, 134, 0.77);
+  padding: 7px 0;
+  color: #d8d8d8
+}
+
+.Directory:hover {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.43), rgba(87, 206, 255, 0.71));
+  cursor: pointer;
+}
+
+.iconWrapper {
+  margin-left: 15px;
+  color: rgba(46, 241, 243, 0.87);
+}
+
+.Directory.currentDir {
+  background: linear-gradient(to right, #001e2b, rgba(30, 197, 182, 0.67));
+}
+
+.currentDir__icon {
+  float: right;
+  font-size: 35px;
+  position: relative;
+  left: 6px;
+  color: #b8f5ff;
+}
+
+.Directory_textInput:hover {
+  cursor: text;
+}
+
+.Directory *::selection {
+  background: #abaaa6;
+  color: #d8d8d8;
+}

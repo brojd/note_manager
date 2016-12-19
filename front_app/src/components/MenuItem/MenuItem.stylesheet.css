@@ -1,0 +1,23 @@
+.MenuItem {
+  text-align: center;
+  margin-bottom: 25px; }
+
+.MenuItem_icon {
+  color: #17d6e4;
+  height: 35px;
+  line-height: 35px;
+  font-size: 35px;
+  width: 45px;
+  margin: 0 auto; }
+
+.MenuItem_icon:hover {
+  color: #8f48c3;
+  cursor: pointer; }
+
+.MenuItem_label {
+  color: #d8d8d8; }
+
+.MenuItem_label:hover {
+  cursor: default; }
+
+/*# sourceMappingURL=MenuItem.stylesheet.css.map */

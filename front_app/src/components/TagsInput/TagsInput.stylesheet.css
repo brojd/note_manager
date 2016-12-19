@@ -1,0 +1,45 @@
+.TagsInput {
+  left: -20px; }
+
+.tagsList {
+  left: -14px; }
+
+.TagsInput_label {
+  color: #d8d8d8;
+  font-size: 16px; }
+
+.TagsInput .tag {
+  background: rgba(0, 148, 142, 0.85);
+  color: #cccccc;
+  font-weight: 500;
+  margin: 0 6px 6px 0; }
+
+.Tag_icon {
+  left: 7px;
+  position: relative; }
+
+.TagsInput .Tag_icon:hover {
+  color: #2c5058;
+  cursor: pointer; }
+
+.tagsList_plusIcon {
+  color: #25c541;
+  width: 16px;
+  margin-left: 10px; }
+
+.tagsList_plusIcon:hover {
+  cursor: pointer;
+  color: #19ff00; }
+
+.tag_textInput:hover {
+  cursor: text; }
+
+.tag *::selection {
+  background: #cac9c4;
+  color: #d8d8d8; }
+
+@media only screen and (max-width: 1350px) {
+  .TagsInput_label {
+    font-size: 1.2vw; } }
+
+/*# sourceMappingURL=TagsInput.stylesheet.css.map */

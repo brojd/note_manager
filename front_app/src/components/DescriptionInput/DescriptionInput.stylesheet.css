@@ -1,0 +1,33 @@
+.DescriptionInput {
+  left: -20px; }
+
+.DescriptionInput_label {
+  color: #d8d8d8;
+  font-size: 16px; }
+
+.DescriptionInput_inputWrapper {
+  padding: 0 !important; }
+
+.DescriptionInput_input {
+  background: rgba(0, 182, 239, 0.41);
+  color: #dedede;
+  border: none;
+  border-radius: 2px;
+  min-height: 200px;
+  padding: 1rem;
+  width: 100%; }
+
+.DescriptionInput_input:focus {
+  border: none;
+  box-shadow: 0 0 4px white;
+  outline: 0; }
+
+.DescriptionInput_input::selection {
+  background: #3b6782;
+  color: #dedede; }
+
+@media only screen and (max-width: 1350px) {
+  .DescriptionInput_label {
+    font-size: 1.2vw; } }
+
+/*# sourceMappingURL=DescriptionInput.stylesheet.css.map */

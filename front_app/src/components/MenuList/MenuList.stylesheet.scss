@@ -1,0 +1,34 @@
+.MenuList {
+  padding-left: 15px;
+  padding-right: 0;
+  list-style: none;
+}
+
+.MenuList .MenuList_addFolderHint {
+  color: #ffffff;
+  background-color: #59227d;
+  box-shadow: 0 0 1px grey;
+  position: absolute !important;
+  width: 160px;
+  top: 10px;
+  left: 180px;
+  border: 1px solid #a5a5a5;
+  z-index: 0;
+}
+
+:global {
+  .hintSliding :local {
+    animation: hintSliding 0.8s infinite;
+  }
+  @keyframes hintSliding {
+    from {
+      left: 175px;
+    }
+    50% {
+      left: 160px;
+    }
+    to {
+      left: 175px;
+    }
+  }
+}

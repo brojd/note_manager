@@ -1,0 +1,32 @@
+@import './react-select-style';
+//noinspection CssInvalidPseudoSelector
+:global { @import '../../../node_modules/react-select/scss/components'; }
+
+.SearchForm {
+  font-size: 12px;
+}
+
+.SearchForm_advanceButton {
+  float: right;
+  margin-top: 10px;
+  font-size: 10.5px;
+  color: #d8d8d8;
+  background: #3f1b5a;
+  border: 1px solid #969696;
+  border-radius: 3px;
+}
+
+.SearchForm_advanceButton:hover {
+  background: #6f2e9d;
+}
+
+.SearchForm .SearchForm_pointingLabel {
+  color: #d8d8d8;
+  background-color: rgba(120, 52, 165, 0.61);
+  box-shadow: 0 0 2px white;
+  border: #7a7a7a;
+}
+
+.SearchForm .SearchForm_pointingLabel:hover {
+  cursor: default;
+}
