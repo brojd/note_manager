@@ -4,7 +4,7 @@ This is a simple app to manage notices and directories. Created for learning pur
 
 ## Getting Started
 
-The repo includes two separate applications - backend and front part.
+The repo includes two separate parts - backend and front part.
 
 To run the backend you should:
 
