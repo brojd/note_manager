@@ -30,3 +30,12 @@
 .SearchForm .SearchForm_pointingLabel:hover {
   cursor: default;
 }
+
+@media screen and (max-width: 1190px) {
+  .SearchForm {
+    font-size: 10.5px;
+  }
+  .SearchForm_advanceButton {
+    font-size: 9px;
+  }
+}

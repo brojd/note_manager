@@ -7,8 +7,12 @@ import { RIEInput } from 'riek';
 const Directory = ({ directory, onDirDoubleClick, onDirClick, currentDir, onNameChange }) => {
   
   const folderIcon = directory.isOpened ?
-    <span className={styles.iconWrapper}><i className='folder open outline large icon'></i></span> :
-    <span className={styles.iconWrapper}><i className={classNames('folder outline large icon', styles.folderIcon)}></i></span>;
+    <span className={styles.iconWrapper}>
+      <i className={classNames('folder open outline large icon', styles.Directory_icon)}></i>
+    </span> :
+    <span className={styles.iconWrapper}>
+      <i className={classNames('folder outline large icon', styles.Directory_icon)}></i>
+    </span>;
   const _isCurrentDir = (dirToCheck) => currentDir ? currentDir.id === dirToCheck.id : false;
   const nameChange = (data) => {
     data.directoryId = directory.id;
@@ -25,7 +29,7 @@ const Directory = ({ directory, onDirDoubleClick, onDirClick, currentDir, onName
          data-position='top center'>
       {folderIcon}
       <span data-tooltip='Click to change the title'
-           data-position='bottom center'>
+            data-position='bottom center'>
         <RIEInput value={directory.name}
                   validate={validate}
                   propName='dirName'

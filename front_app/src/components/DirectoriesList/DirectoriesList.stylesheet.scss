@@ -19,3 +19,12 @@
 .DirectoriesList_button:hover {
   color: #8f48c3;
 }
+
+@media screen and (max-width: 1190px) {
+  .DirectoriesList {
+    padding: 10px;
+  }
+  .DirectoriesList_button {
+    font-size: 11px;
+  }
+}

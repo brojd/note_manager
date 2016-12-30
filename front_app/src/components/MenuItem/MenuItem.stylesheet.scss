@@ -22,3 +22,12 @@
 .MenuItem_label:hover {
   cursor: default;
 }
+
+@media screen and (max-width: 1190px) {
+  .MenuItem {
+    font-size: .85em;
+  }
+  .MenuItem_icon {
+    font-size: 28px;
+  }
+}

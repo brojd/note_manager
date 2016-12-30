@@ -7,7 +7,7 @@ const NoticesList = ({ notices, moveNotice, onNoticeClick, currentNotice,
   let sortedNotices = notices.slice().sort((a, b) => a.position - b.position);
   
   return (
-    <div className='twelve wide column ui center aligned grid'>
+    <div className='ten wide tablet twelve wide computer column ui center aligned grid'>
       <div className='ui horizontal celled list'>
       {sortedNotices.map((n, i) => <Notice key={i}
                                            notice={n}

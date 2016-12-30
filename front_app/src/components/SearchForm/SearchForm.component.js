@@ -31,7 +31,7 @@ const SearchForm = ({ advancedSearch, onToggleAdvancedSearch, notices, onSearch 
   const searchTooltip = advancedSearch ? 'Search by tags or description' : 'Search by name';
   const buttonTooltip = advancedSearch ? 'Switch to simple mode' : 'Switch to advanced mode';
   return (
-    <form className={classNames('four wide column', styles.SearchForm)}>
+    <form className={classNames('six wide tablet four wide computer column', styles.SearchForm)}>
       <div data-tooltip={searchTooltip}
            data-position='top right'>
         <Select name='search-notices'

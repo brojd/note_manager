@@ -100,7 +100,7 @@ class DirectoriesContainer extends Component {
   render() {
     let updateError = this.props.updateError ? this._generateErrorMessage('Cannot update directory') : null;
     return (
-      <section className='three wide column'>
+      <section className=' four wide tablet three wide computer column'>
         <DirectoriesList allDirectories={this.props.allDirectories}
                          onDirDoubleClick={this._toggleDir}
                          onDirClick={this._setCurrentDir}
