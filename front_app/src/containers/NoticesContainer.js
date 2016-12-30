@@ -78,7 +78,6 @@ class NoticesContainer extends Component {
     }
     return (
       <section className='ui grid eleven wide column'>
-        <div className='one wide column'></div>
         <NoticesList notices={notices}
                      moveNotice={this._moveNotice}
                      onNoticeClick={this._setCurrentNotice}
