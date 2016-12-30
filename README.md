@@ -18,7 +18,7 @@ To run front part:
 1. ```cd front-part```
 2. Run ```npm i```
 3. Run ```npm start```
-4.pen your browser on: ```http://localhost:3000/```.
+4. Open your browser on: ```http://localhost:3000/```.
 
 
 You should see:
