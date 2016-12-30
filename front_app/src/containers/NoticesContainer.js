@@ -77,8 +77,7 @@ class NoticesContainer extends Component {
       notices = this.props.allNotices.filter((n) => n.id === this.props.filteredNoticeId);
     }
     return (
-      <section className='ui grid eleven wide column'>
-        <div className='one wide column'></div>
+      <section className='ui grid ten wide tablet eleven wide computer column'>
         <NoticesList notices={notices}
                      moveNotice={this._moveNotice}
                      onNoticeClick={this._setCurrentNotice}

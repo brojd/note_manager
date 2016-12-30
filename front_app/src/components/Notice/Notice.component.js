@@ -71,7 +71,7 @@ class Notice extends Component {
     const tooltip = this.props.currentDirectory.id ? 'Click twice to see details or drag and drop to change the order' :
                                                      'Click twice to see details';
     return connectDragSource(connectDropTarget(
-      <li className={classNames(styles.NoticeWrapper, 'item')}>
+      <li className={classNames(styles.NoticeWrapper, 'column item')}>
         <div className={classNames(styles.Notice, {[styles.currentNotice]: this._isCurrentNotice()})}
              onClick={() => this.props.onNoticeClick(this.props.notice)}
              onDoubleClick={this.props.onIconDblClick}

@@ -34,7 +34,7 @@
   display: table;
   border-spacing: 0;
   border-collapse: separate;
-  height: 34px;
+  height: 30px;
   outline: none;
   overflow: hidden;
   position: relative;
@@ -63,7 +63,7 @@
   bottom: 0;
   color: #d8d8d8;
   left: 0;
-  line-height: 32px;
+  line-height: 28px;
   padding-left: 10px;
   padding-right: 10px;
   position: absolute;
@@ -87,7 +87,7 @@
     outline: none;
     text-decoration: underline; }
 :global .Select-input {
-  height: 32px;
+  height: 28px;
   padding-left: 10px;
   padding-right: 10px;
   vertical-align: middle; }
@@ -103,7 +103,7 @@
     outline: none;
     line-height: 14px;
     /* For IE 8 compatibility */
-    padding: 7px 0 11px;
+    padding: 5px 0 9px;
     /* For IE 8 compatibility */
     -webkit-appearance: none; }
     .is-focused :global .Select-input > input {
@@ -142,15 +142,15 @@
   position: relative;
   text-align: center;
   vertical-align: middle;
-  width: 16px; }
+  width: 14px; }
   :global .Select-clear-zone:hover {
     color: #D0021B; }
 :global .Select-clear {
   display: inline-block;
-  font-size: 17px;
+  font-size: 15px;
   line-height: 1; }
 :global .Select--multi .Select-clear-zone {
-  width: 16px; }
+  width: 14px; }
 :global .Select--multi .Select-multi-value-wrapper {
   display: inline-block; }
 :global .Select .Select-aria-only {
@@ -311,5 +311,12 @@
 
 .SearchForm .SearchForm_pointingLabel:hover {
   cursor: default; }
+
+@media screen and (max-width: 1190px) {
+  .SearchForm {
+    font-size: 10.5px; }
+
+  .SearchForm_advanceButton {
+    font-size: 9px; } }
 
 /*# sourceMappingURL=SearchForm.stylesheet.css.map */

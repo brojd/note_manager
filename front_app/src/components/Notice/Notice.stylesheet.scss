@@ -1,6 +1,5 @@
 .NoticeWrapper {
-  margin-left: 0 !important;
-  margin: 0 35px 25px 0;
+  padding-bottom: .8em !important;
 }
 
 .Notice {
@@ -10,8 +9,8 @@
   border-radius: 8px;
   box-shadow: 0px 0px 6px 0.3px #24B1B9;
   color: #24B1B9;
-  max-width: 140px;
-  min-width: 140px;
+  //max-width: 140px;
+  //min-width: 140px;
 }
 
 .Notice:hover {
@@ -46,4 +45,17 @@
 .Notice *::selection {
   background: #abaaa6;
   color: #d8d8d8;
+}
+
+@media screen and (max-width: 1190px) {
+  .Notice {
+    padding: 10px;
+  }
+  .Notice_icon {
+    font-size: 10px;
+    margin-bottom: 5px;
+  }
+  .Notice_label {
+    font-size: .85em;
+  }
 }
