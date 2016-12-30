@@ -20,7 +20,7 @@ Then open your browser on: ```http://localhost:3000/```.
 
 You should see:
 
-![note manager index](./readmeImg.png)
+![note manager index](./readme-img.png)
 
 
 ## Built With
