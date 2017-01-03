@@ -4,13 +4,18 @@ This is a simple app to manage notices and directories. Created for learning pur
 
 ## Getting Started
 
-The repo includes two separate parts - backend and front part.
+The repo includes two separate parts - ~~backend~~ and front part.
 
-To run the backend you should:
+~~To run the backend you should:~~
 
-1. ```cd react-practice-backend```
-2. Run ```npm i```
-3. Run ```node.server.js```
+~~1. ```cd react-practice-backend```~~
+
+~~2. Run ```npm i```~~
+
+~~3. Run ```node.server.js```~~
+
+Backend is not included in this repository.
+
 
 
 To run front part:
@@ -30,7 +35,7 @@ You should see:
 
 The front part is created with React, Redux and redux-thunk, ReactDnD, ES2015 with Babel, SemanticUI, CSS Modules.
 
+
 ## Authors
 
 * Front part - Dominik Broj
-* Backend - Maxim Knyazev
