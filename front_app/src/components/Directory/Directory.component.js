@@ -1,18 +1,14 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import styles from './Directory.stylesheet.css';
-import { RIEInput } from 'riek';
+import { RIEInput as InlineEditInput } from 'riek';
 
 
 const Directory = ({ directory, onDirDoubleClick, onDirClick, currentDir, onNameChange }) => {
   
   const folderIcon = directory.isOpened ?
-    <span className={styles.iconWrapper}>
-      <i className={classNames('folder open outline large icon', styles.Directory_icon)}></i>
-    </span> :
-    <span className={styles.iconWrapper}>
-      <i className={classNames('folder outline large icon', styles.Directory_icon)}></i>
-    </span>;
+    <span className={styles.iconWrapper}><i className='folder open outline large icon'></i></span> :
+    <span className={styles.iconWrapper}><i className={classNames('folder outline large icon', styles.folderIcon)}></i></span>;
   const _isCurrentDir = (dirToCheck) => currentDir ? currentDir.id === dirToCheck.id : false;
   const nameChange = (data) => {
     data.directoryId = directory.id;
@@ -30,13 +26,13 @@ const Directory = ({ directory, onDirDoubleClick, onDirClick, currentDir, onName
       {folderIcon}
       <span data-tooltip='Click to change the title'
             data-position='bottom center'>
-        <RIEInput value={directory.name}
-                  validate={validate}
-                  propName='dirName'
-                  change={nameChange}
-                  editProps={ { style: { color: '#d8d8d8', backgroundColor: 'transparent', border: 'none', outline: 'none' }}}
-                  defaultProps={{ style: { backgroundColor: 'none' }}}
-                  className={styles.Directory_textInput} />
+        <InlineEditInput value={directory.name}
+                         validate={validate}
+                         propName='dirName'
+                         change={nameChange}
+                         editProps={ { style: { color: '#d8d8d8', backgroundColor: 'transparent', border: 'none', outline: 'none' }}}
+                         defaultProps={{ style: { backgroundColor: 'none' }}}
+                         className={styles.Directory_textInput} />
       </span>
       {_isCurrentDir(directory) ?
         <span className={styles.currentDir__icon}><i className='angle double right icon'></i></span> :

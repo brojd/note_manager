@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { RIEInput } from 'riek';
+import { RIEInput as InlineEditInput } from 'riek';
 import classNames from 'classnames';
 import styles from './TagsInput.stylesheet.css';
 
@@ -26,14 +26,14 @@ const TagsInput = ({ currentNotice, onChange }) => {
                className={classNames(styles.tag, 'ui label')}>
             <span data-tooltip="Click to change tag's name"
                   data-position='top left'>
-            <RIEInput value={tag}
-                      className={styles.tag_textInput}
-                      validate={validate}
-                      propName='tagName'
-                      change={(data) => changeTagName(data, i)}
-                      editProps={ { style: { color: '#d8d8d8', backgroundColor: 'transparent', border: 'none',
-                        outline: 'none', minWidth: '60px', maxWidth: '70px', maxHeight: '14px' }}}
-                      defaultProps={{ style: { backgroundColor: 'none', minWidth: '60px', maxWidth: '70px' }}}/>
+            <InlineEditInput value={tag}
+                             className={styles.tag_textInput}
+                             validate={validate}
+                             propName='tagName'
+                             change={(data) => changeTagName(data, i)}
+                             editProps={ { style: { color: '#d8d8d8', backgroundColor: 'transparent', border: 'none',
+                               outline: 'none', minWidth: '60px', maxWidth: '70px', maxHeight: '14px' }}}
+                             defaultProps={{ style: { backgroundColor: 'none', minWidth: '60px', maxWidth: '70px' }}}/>
             </span>
             <span data-tooltip="Click to delete tag"
                   data-position='top left'>

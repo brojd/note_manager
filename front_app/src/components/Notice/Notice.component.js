@@ -5,7 +5,7 @@ import { DragSource, DropTarget } from 'react-dnd';
 import flow from 'lodash/flow';
 import classNames from 'classnames';
 import styles from './Notice.stylesheet.css';
-import { RIEInput } from 'riek';
+import { RIEInput as InlineEditInput } from 'riek';
 
 const noticeSource = {
   beginDrag(props) {
@@ -69,9 +69,9 @@ class Notice extends Component {
   render() {
     const { connectDragSource, connectDropTarget } = this.props;
     const tooltip = this.props.currentDirectory.id ? 'Click twice to see details or drag and drop to change the order' :
-                                                     'Click twice to see details';
+      'Click twice to see details';
     return connectDragSource(connectDropTarget(
-      <li className={classNames(styles.NoticeWrapper, 'column item')}>
+      <li className={classNames(styles.NoticeWrapper, 'item')}>
         <div className={classNames(styles.Notice, {[styles.currentNotice]: this._isCurrentNotice()})}
              onClick={() => this.props.onNoticeClick(this.props.notice)}
              onDoubleClick={this.props.onIconDblClick}
@@ -82,15 +82,15 @@ class Notice extends Component {
           </div>
           <div data-tooltip='Click to change the title'
                data-position='bottom center'>
-            <RIEInput className={styles.Notice_label}
-                      validate={this._validate}
-                      value={this.props.notice.title}
-                      propName='noticeTitle'
-                      change={this._titleChange}
-                      editProps={ { style: { color: '#d8d8d8', backgroundColor: 'transparent', border: 'none',
-                        outline: 'none', width: '100%', lineHeight: '16px' }}}
-                      defaultProps={{ style: { backgroundColor: 'none' }}} />
-            </div>
+            <InlineEditInput className={styles.Notice_label}
+                             validate={this._validate}
+                             value={this.props.notice.title}
+                             propName='noticeTitle'
+                             change={this._titleChange}
+                             editProps={ { style: { color: '#d8d8d8', backgroundColor: 'transparent', border: 'none',
+                               outline: 'none', width: '100%', lineHeight: '16px' }}}
+                             defaultProps={{ style: { backgroundColor: 'none' }}} />
+          </div>
         </div>
       </li>
     ));
