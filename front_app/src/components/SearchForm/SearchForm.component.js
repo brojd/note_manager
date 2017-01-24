@@ -5,10 +5,10 @@ import styles from './SearchForm.stylesheet.css';
 import classNames from 'classnames';
 
 const SearchForm = ({ advancedSearch, onToggleAdvancedSearch, notices, onSearch }) => {
-
+  
   const advanceFilter = (option, filter) => {
     let foundInDescription = option.description.indexOf(filter) > -1;
-    let foundInTags = _.findIndex(option.tags, (tag) => tag.indexOf(filter) > -1) > -1;
+    let foundInTags = _.findIndex(option.tags, (tag) => tag.toLowerCase().indexOf(filter.toLowerCase()) > -1) > -1;
     if (foundInDescription || foundInTags) {
       return option;
     }
@@ -25,13 +25,13 @@ const SearchForm = ({ advancedSearch, onToggleAdvancedSearch, notices, onSearch 
   const buttonText = advancedSearch ? 'Simple' : 'Advanced';
   const filterOption = advancedSearch ? advanceFilter : null;
   const label = <div className={classNames(styles.SearchForm_pointingLabel, 'ui pointing label')}>
-                  Searching by description or tags
-                </div>;
+    Searching by description or tags
+  </div>;
   const pointingLabel = advancedSearch ? label : null;
   const searchTooltip = advancedSearch ? 'Search by tags or description' : 'Search by name';
   const buttonTooltip = advancedSearch ? 'Switch to simple mode' : 'Switch to advanced mode';
   return (
-    <form className={classNames('six wide tablet four wide computer column', styles.SearchForm)}>
+    <form className={classNames('three wide column', styles.SearchForm)}>
       <div data-tooltip={searchTooltip}
            data-position='top right'>
         <Select name='search-notices'
