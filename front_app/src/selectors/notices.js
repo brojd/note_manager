@@ -35,3 +35,15 @@ export const getFilteredNoticeId = createSelector(
   filteredNoticeIdSelector,
   (filteredNoticeId) => filteredNoticeId
 );
+
+const addErrorSelector = state => state.notices.addError;
+export const getAddNoticeError = createSelector(
+  addErrorSelector,
+  (addError) => addError
+);
+
+const deleteErrorSelector = state => state.notices.deleteError;
+export const getDeleteNoticeError = createSelector(
+  deleteErrorSelector,
+  (deleteError) => deleteError
+);

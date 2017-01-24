@@ -6,6 +6,8 @@ import { updateAllDirectories, setCurrentDirectory } from '../actions/directorie
 import { updateAllNoticesSuccess } from '../actions/notices';
 import { addDirectoryToRoot, addDirectoryToChild, addNotice, deleteNotice, deleteDirectory } from '../actions/async';
 import findDirById from '../helpers/findDirById';
+import { getAllDirectories, getCurrentDirectory, getAddDirError, getDeleteDirError } from '../selectors/directories';
+import { getAllNotices, getCurrentNotice, getAddNoticeError, getDeleteNoticeError } from '../selectors/notices';
 
 class MenuContainer extends Component {
   
@@ -120,14 +122,14 @@ class MenuContainer extends Component {
 
 const mapStateToProps = (state) => {
   return  {
-    currentDir: state.directories.currentDirectory,
-    currentNotice: state.notices.currentNotice,
-    allDirectories: state.directories.allDirectories,
-    allNotices: state.notices.allNotices,
-    addDirectoryError: state.directories.addError,
-    addNoticeError: state.notices.addError,
-    deleteNoticeError: state.notices.deleteError,
-    deleteDirectoryError: state.directories.deleteError
+    currentDir: getCurrentDirectory(state),
+    currentNotice: getCurrentNotice(state),
+    allDirectories: getAllDirectories(state),
+    allNotices: getAllNotices(state),
+    addDirectoryError: getAddDirError(state),
+    addNoticeError: getAddNoticeError(state),
+    deleteNoticeError: getDeleteNoticeError(state),
+    deleteDirectoryError: getDeleteDirError(state)
   };
 };
 

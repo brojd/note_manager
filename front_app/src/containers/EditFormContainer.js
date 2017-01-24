@@ -8,6 +8,7 @@ import {browserHistory} from 'react-router';
 import { Link } from 'react-router';
 import styles from './EditFormContainer.stylesheet.css';
 import classNames from 'classnames';
+import { getAllNotices, getCurrentNotice, getUpdateError } from '../selectors/notices';
 
 class EditFormContainer extends Component {
   
@@ -82,9 +83,9 @@ class EditFormContainer extends Component {
 
 const mapStateToProps = (state) => {
   return  {
-    currentNotice: state.notices.currentNotice,
-    allNotices: state.notices.allNotices,
-    updateNoticeError: state.notices.updateError
+    currentNotice: getCurrentNotice(state),
+    allNotices: getAllNotices(state),
+    updateNoticeError: getUpdateError(state)
   };
 };
 
