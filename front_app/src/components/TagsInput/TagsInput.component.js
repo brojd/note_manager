@@ -21,8 +21,8 @@ const TagsInput = ({ currentNotice, onChange }) => {
     <div className={classNames(styles.TagsInput, 'twelve wide column ui grid left aligned')}>
       <label className={classNames(styles.TagsInput_label, 'four wide column')}>Tags:</label>
       <div className={classNames(styles.tagsList, 'twelve wide column')}>
-        {tags.map((tag, i) => (
-          <div key={i}
+        {tags.map((tag, index) => (
+          <div key={index}
                className={classNames(styles.tag, 'ui label')}>
             <span data-tooltip="Click to change tag's name"
                   data-position='top left'>
@@ -30,7 +30,7 @@ const TagsInput = ({ currentNotice, onChange }) => {
                              className={styles.tag_textInput}
                              validate={validate}
                              propName='tagName'
-                             change={(data) => changeTagName(data, i)}
+                             change={(data) => changeTagName(data, index)}
                              editProps={ { style: { color: '#d8d8d8', backgroundColor: 'transparent', border: 'none',
                                outline: 'none', minWidth: '60px', maxWidth: '70px', maxHeight: '14px' }}}
                              defaultProps={{ style: { backgroundColor: 'none', minWidth: '60px', maxWidth: '70px' }}}/>
@@ -38,7 +38,7 @@ const TagsInput = ({ currentNotice, onChange }) => {
             <span data-tooltip="Click to delete tag"
                   data-position='top left'>
               <i className={classNames(styles.Tag_icon, 'detail remove icon')}
-                 onClick={() => removeTag(i)}>
+                 onClick={() => removeTag(index)}>
               </i>
             </span>
           </div>

@@ -15,7 +15,9 @@ const DirectoriesList = ({ allDirectories, onDirDoubleClick, onDirClick, current
                      onDirDoubleClick={onDirDoubleClick}
                      currentDir={currentDir}
                      onNameChange={onNameChange} />
-          <div className={styles.childrenList}>{rootDir.children.map((n, i) => createTreeToDisplay(n, i))}</div>
+          <div className={styles.childrenList}>
+            {rootDir.children.map((dir, index) => createTreeToDisplay(dir, index))}
+          </div>
         </div>
       );
     } else {
@@ -28,7 +30,8 @@ const DirectoriesList = ({ allDirectories, onDirDoubleClick, onDirClick, current
     }
   };
   let treeObj = allDirectories.hasOwnProperty('children') ? allDirectories : [];
-  let treeToDisplay = treeObj.children ? treeObj.children.map((rootDir, i) => createTreeToDisplay(rootDir, i)) : null;
+  let treeToDisplay = treeObj.children ? treeObj.children.map((rootDir, index) => createTreeToDisplay(rootDir, index)) :
+    null;
   
   return (
     <div className={styles.DirectoriesList}>
