@@ -58,7 +58,7 @@ class EditFormContainer extends Component {
   render() {
     let updateError = this.props.updateNoticeError ? this._generateErrorMessage('Cannot update notice') : null;
     return (
-      <section className={classNames('twelve wide tablet eight wide computer column center aligned', styles.EditFormContainer)}>
+      <section className={classNames('eight wide column center aligned', styles.EditFormContainer)}>
         <form className={classNames('ui grid center aligned', styles.editForm)}>
           <TitleInput onChange={this._handleChange}
                       currentNotice={this.props.currentNotice} />
@@ -88,10 +88,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateNotice: (noticeId, noticeTitle) => dispatch(updateNotice(noticeId, noticeTitle))
-  };
+const mapDispatchToProps = {
+  updateNotice
 };
 
 EditFormContainer.propTypes = {

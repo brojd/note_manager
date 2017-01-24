@@ -100,7 +100,7 @@ class DirectoriesContainer extends Component {
   render() {
     let updateError = this.props.updateError ? this._generateErrorMessage('Cannot update directory') : null;
     return (
-      <section className=' four wide tablet three wide computer column'>
+      <section className='three wide column'>
         <DirectoriesList allDirectories={this.props.allDirectories}
                          onDirDoubleClick={this._toggleDir}
                          onDirClick={this._setCurrentDir}
@@ -122,15 +122,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateAllDirectories: (directory) => dispatch(updateAllDirectories(directory)),
-    updateDirectory: (dirId, newDir) => dispatch(updateDirectory(dirId, newDir)),
-    updateNotice: (noticeId, newNotice) => dispatch(updateNotice(noticeId, newNotice)),
-    setCurrentDirectory: (directory) => dispatch(setCurrentDirectory(directory)),
-    setCurrentNotice: (notice) => dispatch(setCurrentNotice(notice)),
-    doSearchFiltering: (filteringBoolean) => dispatch(doSearchFiltering(filteringBoolean))
-  };
+const mapDispatchToProps = {
+  updateAllDirectories,
+  updateDirectory,
+  updateNotice,
+  setCurrentDirectory,
+  setCurrentNotice,
+  doSearchFiltering
 };
 
 DirectoriesContainer.propTypes = {

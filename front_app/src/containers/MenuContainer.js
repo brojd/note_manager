@@ -131,17 +131,15 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateAllDirectories: (directory) => dispatch(updateAllDirectories(directory)),
-    updateAllNoticesSuccess: (newNotices) => dispatch(updateAllNoticesSuccess(newNotices)),
-    addDirectoryToRoot: (newDir, currentDirs) => dispatch(addDirectoryToRoot(newDir, currentDirs)),
-    addDirectoryToChild: (newDir, currentDirs) => dispatch(addDirectoryToChild(newDir, currentDirs)),
-    setCurrentDirectory: (directory) => dispatch(setCurrentDirectory(directory)),
-    addNotice: (newNotice) => dispatch(addNotice(newNotice)),
-    deleteNotice: (noticeId) => dispatch(deleteNotice(noticeId)),
-    deleteDirectory: (dirId) => dispatch(deleteDirectory(dirId))
-  };
+const mapDispatchToProps = {
+  updateAllDirectories,
+  updateAllNoticesSuccess,
+  addDirectoryToRoot,
+  addDirectoryToChild,
+  setCurrentDirectory,
+  addNotice,
+  deleteNotice,
+  deleteDirectory
 };
 
 MenuContainer.propTypes = {

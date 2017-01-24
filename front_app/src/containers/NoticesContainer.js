@@ -77,7 +77,8 @@ class NoticesContainer extends Component {
       notices = this.props.allNotices.filter((n) => n.id === this.props.filteredNoticeId);
     }
     return (
-      <section className='ui grid ten wide tablet eleven wide computer column'>
+      <section className='ui grid eleven wide column'>
+        <div className='one wide column'></div>
         <NoticesList notices={notices}
                      moveNotice={this._moveNotice}
                      onNoticeClick={this._setCurrentNotice}
@@ -107,18 +108,14 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateTwoNotices: (firstId, firstNotice, secondId, secondNotice, newNotices) => {
-      return dispatch(updateTwoNotices(firstId, firstNotice, secondId, secondNotice, newNotices));
-    },
-    updateNotice: (noticeId, noticeTitle) => dispatch(updateNotice(noticeId, noticeTitle)),
-    setCurrentNotice: (notice) => dispatch(setCurrentNotice(notice)),
-    doSearchFiltering: (filteringBoolean) => dispatch(doSearchFiltering(filteringBoolean)),
-    toggleAdvancedSearch: () => dispatch(toggleAdvancedSearch()),
-    setCurrentDirectory: (directory) => dispatch(setCurrentDirectory(directory)),
-    setFilterNoticeId: (noticeId) => dispatch(setFilterNoticeId(noticeId))
-  };
+const mapDispatchToProps = {
+  updateTwoNotices,
+  updateNotice,
+  setCurrentNotice,
+  doSearchFiltering,
+  toggleAdvancedSearch,
+  setCurrentDirectory,
+  setFilterNoticeId
 };
 
 NoticesContainer.propTypes = {
