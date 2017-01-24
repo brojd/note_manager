@@ -33,7 +33,6 @@ class MenuContainer extends Component {
             newDir.isVisible = dir.isOpened;
             newDir.isOpened = false;
             newDir.parentId = dir.id;
-            dir.children.push(newDir);
             this.props.addDirectoryToChild(newDir, currentDirs);
           } else if (dir.id !== parentId && dir.hasOwnProperty('children')) {
             addToCurrentDir(dir.children);
@@ -103,7 +102,7 @@ class MenuContainer extends Component {
     let addNoticeError = this.props.addNoticeError ? this._generateErrorMessage('Cannot add notice') : null;
     let deleteNoticeError = this.props.deleteNoticeError ? this._generateErrorMessage('Cannot delete notice') : null;
     let deleteDirectoryError = this.props.deleteDirectoryError ? this._generateErrorMessage('Cannot delete directory') :
-                                                                 null;
+      null;
     return (
       <section className='two wide column center aligned'>
         <MenuList onAddDirClick={this._addDir}

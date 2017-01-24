@@ -6,21 +6,23 @@ import { fetchAllDirectoriesSuccess, fetchAllDirectoriesError, updateDirectorySu
 import { fetchAllNoticesSuccess, updateAllNoticesSuccess, updateAllNoticesError, updateNoticeSuccess, updateNoticeError,
   addNoticeSuccess, addNoticeError, deleteNoticeSuccess, deleteNoticeError } from './notices';
 import createTree from '../helpers/createTree';
+import findAndModifyDir from '../helpers/findAndModifyDir';
+import findDirById from '../helpers/findDirById';
 
 export const fetchDirsAndNotices = () => {
   return function(dispatch) {
     axios.all([
-      axios.get(`${API_URL}/directories`),
-      axios.get(`${API_URL}/notices`)
-    ])
-    .then(axios.spread((dirResponse, noticeResponse) => {
-      dispatch(fetchAllDirectoriesSuccess(dirResponse.data));
-      dispatch(fetchAllNoticesSuccess(noticeResponse.data));
-    }))
-    .catch((err) => {
-      dispatch(fetchAllDirectoriesError());
-      console.error(err);
-    });
+        axios.get(`${API_URL}/directories`),
+        axios.get(`${API_URL}/notices`)
+      ])
+      .then(axios.spread((dirResponse, noticeResponse) => {
+        dispatch(fetchAllDirectoriesSuccess(dirResponse.data));
+        dispatch(fetchAllNoticesSuccess(noticeResponse.data));
+      }))
+      .catch((err) => {
+        dispatch(fetchAllDirectoriesError());
+        console.error(err);
+      });
   };
 };
 
@@ -28,9 +30,11 @@ export const addDirectoryToRoot = (newDir, currentDirs) => {
   return function (dispatch) {
     axios.post(`${API_URL}/directories`, newDir)
       .then((res) => {
-        res.data.isVisible = true;
-        currentDirs.push(res.data);
-        dispatch(addDirectorySuccess(currentDirs));
+        const newItem = {
+          ...res.data,
+          isVisible: true
+        };
+        dispatch(addDirectorySuccess([...currentDirs, newItem]));
       })
       .catch((err) => {
         dispatch(addDirectoryError());
@@ -43,8 +47,12 @@ export const addDirectoryToChild = (newDir, currentDirs) => {
   return function (dispatch) {
     axios.post(`${API_URL}/directories`, newDir)
       .then((res) => {
-        newDir.id = res.data.id;
-        dispatch(addDirectorySuccess(currentDirs));
+        const newItem = { ...res.data };
+        const newDirs = [ ...currentDirs ];
+        const newParent = { ...findDirById(newItem.parentId, newDirs) };
+        newParent.children.push(newItem);
+        findAndModifyDir(newItem.parentId, newDirs, newParent);
+        dispatch(addDirectorySuccess(newDirs));
       })
       .catch((err) => {
         dispatch(addDirectoryError());
@@ -98,14 +106,14 @@ export const addNotice = (newNotice) => {
 export const updateTwoNotices = (firstId, firstNotice, secondId, secondNotice, newNotices) => {
   return function(dispatch) {
     axios.all([
-      axios.put(`${API_URL}/notices/${firstId}`, firstNotice),
-      axios.put(`${API_URL}/notices/${secondId}`, secondNotice)
-    ])
-    .then(() => dispatch(updateAllNoticesSuccess(newNotices)))
-    .catch((err) => {
-      dispatch(updateAllNoticesError());
-      console.error(err);
-    });
+        axios.put(`${API_URL}/notices/${firstId}`, firstNotice),
+        axios.put(`${API_URL}/notices/${secondId}`, secondNotice)
+      ])
+      .then(() => dispatch(updateAllNoticesSuccess(newNotices)))
+      .catch((err) => {
+        dispatch(updateAllNoticesError());
+        console.error(err);
+      });
   };
 };
 
@@ -130,4 +138,3 @@ export const deleteNotice = (noticeId) => {
       });
   };
 };
-
