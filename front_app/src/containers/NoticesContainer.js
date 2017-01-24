@@ -8,6 +8,9 @@ import SearchForm from '../components/SearchForm/SearchForm.component';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import {browserHistory} from 'react-router';
+import { getCurrentDirectory } from '../selectors/directories';
+import { getAllNotices, getCurrentNotice, getFilteringBoolean,
+  getAdvancedSearch, getUpdateError, getFilteredNoticeId } from '../selectors/notices';
 
 class NoticesContainer extends Component {
   
@@ -98,13 +101,13 @@ class NoticesContainer extends Component {
 
 const mapStateToProps = (state) => {
   return  {
-    allNotices: state.notices.allNotices,
-    currentDirectory: state.directories.currentDirectory,
-    currentNotice: state.notices.currentNotice,
-    searchFilteringBoolean: state.notices.searchFilteringBoolean,
-    advancedSearch: state.notices.advancedSearch,
-    updateError: state.notices.updateError,
-    filteredNoticeId: state.notices.filteredNoticeId
+    allNotices: getAllNotices(state),
+    currentDirectory: getCurrentDirectory(state),
+    currentNotice: getCurrentNotice(state),
+    searchFilteringBoolean: getFilteringBoolean(state),
+    advancedSearch: getAdvancedSearch(state),
+    updateError: getUpdateError(state),
+    filteredNoticeId: getFilteredNoticeId(state)
   };
 };
 
