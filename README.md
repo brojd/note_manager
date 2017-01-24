@@ -26,10 +26,11 @@ To run front part:
 4. Open your browser on: ```http://localhost:3000/```.
 
 
-You should see:
+## Demo
 
-![note manager index](./readme-img.png)
+![note manager index](./front_app/app_gifs/10.Demo.gif)
 
+To see more detailed demo gifs, please visit ```./front_app/app_gifs``` directory
 
 ## Built With
 
