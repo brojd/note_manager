@@ -5,6 +5,8 @@ import { setCurrentNotice, doSearchFiltering } from '../actions/notices';
 import { updateDirectory, updateNotice } from '../actions/async';
 import DirectoriesList from '../components/DirectoriesList/DirectoriesList.component';
 import findDirById from '../helpers/findDirById';
+import { getAllDirectories, getCurrentDirectory, getUpdateError } from '../selectors/directories';
+import { getAllNotices} from '../selectors/notices';
 
 class DirectoriesContainer extends Component {
   
@@ -115,10 +117,10 @@ class DirectoriesContainer extends Component {
 
 const mapStateToProps = (state) => {
   return  {
-    allDirectories: state.directories.allDirectories,
-    currentDirectory: state.directories.currentDirectory,
-    updateError: state.directories.updateError,
-    allNotices: state.notices.allNotices
+    allDirectories: getAllDirectories(state),
+    currentDirectory: getCurrentDirectory(state),
+    updateError: getUpdateError(state),
+    allNotices: getAllNotices(state)
   };
 };
 

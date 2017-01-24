@@ -1,76 +1,58 @@
-const FETCH_ALL_DIRECTORIES_SUCCESS = 'FETCH_ALL_DIRECTORIES_SUCCESS';
-export const fetchAllDirectoriesSuccess = (directories) => {
-  return {
-    'type': FETCH_ALL_DIRECTORIES_SUCCESS,
-    directories
-  };
+import createTree from '../helpers/createTree';
+import findAndModifyDir from '../helpers/findAndModifyDir';
+
+const initialState = {
+  allDirectories: [],
+  currentDirectory: {},
+  fetchError: false,
+  updateError: false,
+  addError: false,
+  deleteError: false
 };
 
-const FETCH_ALL_DIRECTORIES_ERROR = 'FETCH_ALL_DIRECTORIES_ERROR';
-export const fetchAllDirectoriesError = () => {
-  return {
-    'type': FETCH_ALL_DIRECTORIES_ERROR
-  };
+const reducer = function(state = initialState, action) {
+  switch(action.type) {
+    case 'FETCH_ALL_DIRECTORIES_SUCCESS':
+      return Object.assign({ ...state, allDirectories: createTree(action.directories), fetchError: false });
+    case 'FETCH_ALL_DIRECTORIES_ERROR':
+      return Object.assign({ ...state, fetchError: true });
+    case 'ADD_DIRECTORY_SUCCESS':
+      return Object.assign({
+        ...state,
+        allDirectories: Object.assign({ ...state.allDirectories, children: action.newDirs, addError: false })
+      });
+    case 'ADD_DIRECTORY_ERROR':
+      return Object.assign({ ...state, addError: true });
+    case 'DELETE_DIRECTORY_SUCCESS':
+      return Object.assign({
+        ...state,
+        allDirectories: Object.assign({ ...state.allDirectories, children: action.newDirs, deleteError: false })
+      });
+    case 'DELETE_DIRECTORY_ERROR':
+      return Object.assign({ ...state, deleteError: true });
+    case 'UPDATE_DIRECTORY_SUCCESS':
+    {
+      let dirsCopy = Object.assign({...state.allDirectories});
+      findAndModifyDir(action.dirId, dirsCopy.children, action.newDir);
+      return Object.assign({
+        ...state,
+        allDirectories: Object.assign({...state.allDirectories, children: dirsCopy.children}),
+        updateError: false
+      });
+    }
+    case 'UPDATE_DIRECTORY_ERROR':
+      return Object.assign({ ...state, updateError: true });
+    case 'UPDATE_ALL_DIRECTORIES':
+      return Object.assign({
+        ...state,
+        allDirectories: Object.assign({ ...state.allDirectories, children: action.newDirs })
+      });
+    case 'SET_CURRENT_DIRECTORY':
+      if (action.currentDir) {
+        return Object.assign({ ...state, currentDirectory: action.currentDir });
+      }
+  }
+  return state;
 };
 
-const ADD_DIRECTORY_SUCCESS = 'ADD_DIRECTORY_SUCCESS';
-export const addDirectorySuccess = (newDirs) => {
-  return {
-    'type': ADD_DIRECTORY_SUCCESS,
-    newDirs
-  };
-};
-
-const ADD_DIRECTORY_ERROR = 'ADD_DIRECTORY_ERROR';
-export const addDirectoryError = () => {
-  return {
-    'type': ADD_DIRECTORY_ERROR
-  };
-};
-
-const DELETE_DIRECTORY_SUCCESS = 'DELETE_DIRECTORY_SUCCESS';
-export const deleteDirectorySuccess = (newDirs) => {
-  return {
-    'type': DELETE_DIRECTORY_SUCCESS,
-    newDirs
-  };
-};
-
-const DELETE_DIRECTORY_ERROR = 'DELETE_DIRECTORY_ERROR';
-export const deleteDirectoryError = () => {
-  return {
-    'type': DELETE_DIRECTORY_ERROR
-  };
-};
-
-const UPDATE_DIRECTORY_SUCCESS = 'UPDATE_DIRECTORY_SUCCESS';
-export const updateDirectorySuccess = (dirId, newDir) => {
-  return {
-    'type': UPDATE_DIRECTORY_SUCCESS,
-    dirId,
-    newDir
-  };
-};
-
-const UPDATE_DIRECTORY_ERROR = 'UPDATE_DIRECTORY_ERROR';
-export const updateDirectoryError = () => {
-  return {
-    'type': UPDATE_DIRECTORY_ERROR
-  };
-};
-
-const UPDATE_ALL_DIRECTORIES = 'UPDATE_ALL_DIRECTORIES';
-export const updateAllDirectories = (newDirs) => {
-  return {
-    'type': UPDATE_ALL_DIRECTORIES,
-    'newDirs': newDirs
-  };
-};
-
-const SET_CURRENT_DIRECTORY = 'SET_CURRENT_DIRECTORY';
-export const setCurrentDirectory = (currentDir) => {
-  return {
-    'type': SET_CURRENT_DIRECTORY,
-    'currentDir': currentDir
-  };
-};
+export default reducer;
