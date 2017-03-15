@@ -3,7 +3,6 @@ import findAndModifyDir from '../helpers/findAndModifyDir';
 
 const initialState = {
   allDirectories: [],
-  allNotices: [],
   currentDirectory: {},
   fetchError: false,
   updateError: false,
